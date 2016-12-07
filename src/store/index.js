@@ -22,6 +22,7 @@ const
   SET_AVAILABLE_DAYS =      'SET_AVAILABLE_DAYS',
   SET_START_LOC =           'SET_START_LOC',
   SET_COLCOR =              'SET_COLCOR',
+  SET_GEOMETRY =            'SET_GEOMETRY',
   SET_CLOCOR =              'SET_CLOCOR',
   SET_GAIN =                'SET_GAIN',
   SET_LAT=                  'SET_LAT',
@@ -53,6 +54,7 @@ const Reducers = {
   SET_ZOOM:           (zoom) => ({zoom}),
   SET_SIZE:           (size) => ({size}),
   SET_CURRENT_DATE:   (currentDate) => ({currentDate}),
+  SET_GEOMETRY:       (geometry) => ({geometry}),
   GENERATE_WMS_URL:   generateWmsUrl,
   SET_PATH:           updatePath,
   REFRESH:            (doRefresh) => ({doRefresh}),
@@ -61,10 +63,10 @@ const Reducers = {
 
 
 const DoesNeedRefresh = [
-  SET_MAXCC, SET_DATE, SET_PRESET, SET_LAYERS, SET_COLCOR, SET_CLOCOR, SET_GAIN, SET_CURR_VIEW
+  SET_MAXCC, SET_DATE, SET_PRESET, SET_LAYERS, SET_COLCOR, SET_GEOMETRY, SET_CLOCOR, SET_GAIN, SET_CURR_VIEW
 ]
 const DoRefreshUrl = [
-  SET_LAT, SET_LNG, SET_ZOOM, SET_EVAL_SCRIPT, SET_MAXCC, SET_DATE, SET_PRESET, SET_LAYERS, SET_COLCOR, SET_CLOCOR, SET_GAIN, SET_CURR_VIEW
+  SET_LAT, SET_LNG, SET_ZOOM, SET_EVAL_SCRIPT, SET_MAXCC, SET_DATE, SET_PRESET, SET_LAYERS, SET_COLCOR, SET_GEOMETRY, SET_CLOCOR, SET_GAIN, SET_CURR_VIEW
 ]
 
 function updatePath() {
@@ -84,6 +86,7 @@ function updatePath() {
   params.push(`time=${ time }`)
   params.push(`cloudCorrection=${ store.cloudCorrection }`)
   params.push(`colCor=${ store.colCor }`)
+  params.push(`geometry=${ store.geometry }`)
   params.push(`${evalScriptParam}`)
 
   const path = params.join('/')
@@ -174,6 +177,7 @@ module.exports = {
   setStartLocation:     action(SET_START_LOC),
   setMapBounds:         action(SET_MAP_BOUNDS),
   setColorCorrection:   action(SET_COLCOR),
+  setGeometry:          action(SET_GEOMETRY),
   setCloudCorrection:   action(SET_CLOCOR),
   setGain:              action(SET_GAIN),
   setLat:               action(SET_LAT),

@@ -8,6 +8,7 @@ import Store from '../store'
 import {connect} from 'react-redux'
 import {EventEmitter} from 'fbemitter'
 import 'nprogress/nprogress.css'
+import omnivore from 'leaflet-omnivore'
 
 
 const styles = {
@@ -78,6 +79,14 @@ class RootMap extends React.Component {
 
     L.control.layers(null,overlayMaps).addTo(sentinelMap)
 
+    let geom = Store.current.geometry;
+    if (geom) {
+      let geomLayer = L.geoJson(null, {
+          fill: false
+      });
+      omnivore.wkt.parse(decodeURIComponent(geom), null, geomLayer).addTo(sentinelMap);
+    }
+
     sentinelMap.zoomControl.setPosition('bottomright')
     sentinelMap.on('moveend', () => {
       Store.setMapBounds(sentinelMap.getBounds())
@@ -136,6 +145,7 @@ class RootMap extends React.Component {
     let colcors = Store.current.colCor
     let layers = this.getLayersString()
     let evalS = ''
+    let geom = Store.current.geometry
     if (this.isCustom()) {
       if (Store.current.evalscript !== '') {
         evalS = Store.current.evalscript
