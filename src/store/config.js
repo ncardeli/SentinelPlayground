@@ -3,7 +3,7 @@ import moment from 'moment'
 const common = {
     mapId: "mapId",
     baseWmsUrl: "http://services.sentinel-hub.com",
-    instanceID: "YOUR_SENTINEL_API"
+    instanceID: "0875bf11-668e-4626-9e39-e44e1eb79640"
   },
   urls = {
     baseIndexUrl: common.baseWmsUrl,
@@ -57,6 +57,7 @@ module.exports = {
       image: "image.jpg"
     },
   },
+  geometry: "",
   "colCor": '',
   "cloudCorrection": 'none',
   "gain": 1,
