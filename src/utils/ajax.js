@@ -31,7 +31,7 @@ export function loadGetCapabilities() {
                                     if (!myRegexp.test(layerName)) {
                                         presets[layerName] = {
                                             name:  layers[l].Title[0],
-                                            desc:  layers[l].Abstract[0],
+                                            desc:  layers[l].Abstract ? layers[l].Abstract[0] : "",
                                             image: `${Store.current.baseImgWmsUrl}&SHOWLOGO=false&LAYERS=${layerName}&BBOX=-19482,6718451,-18718,6719216&MAXCC=20&WIDTH=40&HEIGHT=40&gain=1&FORMAT=image/jpeg&bgcolor=00000000&transparent=1&TIME=2015-01-01/2016-08-04`
                                         }
                                     } else {
