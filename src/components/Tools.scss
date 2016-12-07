@@ -46,15 +46,16 @@
 
   .simplePresetsHolder a {
     display: block;
-    color: #ddd;
-    opacity: .5;
+    color: #333;
+    opacity: 1;
     font-size: 13px;
     padding-left: 65px;
     padding-top: 10px;
     min-height: 46px;
-    border-bottom: 1px solid #555;
+    border-bottom: 1px solid #ddd;
     clear: both;
     cursor: pointer;
+    background-color: #eee;
 
     .icon {
       float: left;
@@ -66,26 +67,32 @@
       margin-top: -5px;
       border-radius: 50px;
       display: block;
-      background: $mainMedium;
+      background: #22232d;
       border: 3px solid transparent;
+      color: #ddd;
     }
     &:hover {
-      opacity: .8;
+      border-right: 6px solid $primaryCol;
+
+      .icon {
+        border: 3px solid $primaryCol;
+      }
     }
     &.active:hover,
     &.active {
-      color: #fff;
+      color: #111;
       opacity: 1;
+      font-weight: bold;
 
       .icon {
         border: 3px solid $primaryCol;
       }
       small {
-        color: #eee;
+        color: #333;
       }
     }
     small {
-      color: #ccc;
+      color: #777;
       display: block;
     }
   }
